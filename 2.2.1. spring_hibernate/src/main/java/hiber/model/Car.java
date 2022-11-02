@@ -7,10 +7,13 @@ import java.io.Serializable;
 @Table(name = "cars")
 public class Car implements Serializable {
 
-    @Id
+
     @OneToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
+    @Id
+    @Column(name = "car_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @Column(name = "series")
     private int series;
@@ -59,7 +62,6 @@ public class Car implements Serializable {
     public void setModel(String model) {
         this.model = model;
     }
-
 
 
     @Override
